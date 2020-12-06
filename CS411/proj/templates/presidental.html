@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>DataViz</title>
+        <style type="text/css">
+            html, body {
+                font: 16pt arial;
+            }
+            #viz {
+                width: 900px;
+                height: 700px;
+                border: 1px solid lightgray;
+                font: 22pt arial;
+            }
+        </style>
+    <script src="https://rawgit.com/neo4j-contrib/neovis.js/master/dist/neovis.js"></script>
+</head>   
+    <script>
+        function draw() {
+            var config = {
+                container_id: "viz",
+                server_url: "bolt://52.91.157.39:33507",
+                server_user: "neo4j",
+                server_password: "contribution-authorization-platforms",
+                labels: {
+                    // "Troll": {
+                    //     caption: "user_key",
+                    //     size: "pagerank",
+                    //     community: "community"
+                    // }
+                },
+                relationships: {
+                    // "RETWEETS": {
+                    //     caption: false,
+                    //     thickness: "count"
+                    // }
+                },
+                initial_cypher: "MATCH (a:User)-[:Tweeted]->(b:Tweet) RETURN a,b LIMIT145"
+            }
+
+            var viz = new NeoVis.default(config);
+            viz.render();
+        }
+    </script>
+    <body onload="draw()">
+        <div id="viz"></div>
+    </body>
+</html>

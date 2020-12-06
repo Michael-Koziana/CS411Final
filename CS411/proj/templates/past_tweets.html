@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Here are some amazing tweets from some of other fellow Tweeters!! </h1>
+<p>       </p>
+{% for tweet in tweets %}
+<h4> {{tweet.tweet}}"</h4>
+<p>       </p>
+<h1></h1>
+{% endfor %}
+{% endblock content %}
